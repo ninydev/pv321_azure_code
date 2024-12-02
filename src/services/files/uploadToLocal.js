@@ -15,7 +15,8 @@ if (!fs.existsSync(UPLOAD_DIR)) {
 export const uploadToLocal = (file) => {
     return new Promise((resolve, reject) => {
         try {
-            const uploadPath = path.join(UPLOAD_DIR, `${Date.now()}-${file.name}`); // Формируем путь для сохранения
+            const fileName = `${Date.now()}-${file.name}`;
+            const uploadPath = path.join(UPLOAD_DIR, fileName); // Формируем путь для сохранения
 
             // Сохраняем файл в локальной директории
             file.mv(uploadPath, (err) => {
@@ -24,12 +25,15 @@ export const uploadToLocal = (file) => {
                     return reject(new Error(`Ошибка при сохранении файла: ${err.message}`));
                 }
 
+                const url = '/uploads/' + fileName;
+
                 resolve({
                     originalname: file.name,
                     size: file.size,
                     mimetype: file.mimetype,
                     path: uploadPath,
-                    url: uploadPath,
+                    name: fileName,
+                    url: url,
                 });
             });
         } catch (err) {

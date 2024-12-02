@@ -32,4 +32,4 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Настройка пути для загрузки временных файлов
-export const UPLOAD_DIR = path.resolve(__dirname, '../uploads'); // Папка "uploads" в корне проекта
+export const UPLOAD_DIR = path.resolve(__dirname, '../../wwwroot/uploads'); // Папка "uploads" в корне проекта
