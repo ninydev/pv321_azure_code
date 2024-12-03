@@ -33,6 +33,12 @@ export const AZURE_TRANSLATION_ENDPOINT  = process.env.AZURE_TRANSLATION_ENDPOIN
 export const AZURE_TRANSLATION_KEY = process.env.AZURE_TRANSLATION_KEY || null;
 export const AZURE_TRANSLATION_REGION = process.env.AZURE_TRANSLATION_REGION || 'westus';
 
+/**
+ *
+ */
+export const AZURE_TEXT_ANALYTIC_ENDPOINT  = process.env.AZURE_TEXT_ANALYTIC_ENDPOINT || null;
+export const AZURE_TEXT_ANALYTIC_KEY = process.env.AZURE_TEXT_ANALYTIC_KEY || null;
+export const AZURE_TEXT_ANALYTIC_REGION = process.env.AZURE_TEXT_ANALYTIC_REGION || 'westus';
 
 /**
  * Настройка папки загрузки файлов
