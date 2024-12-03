@@ -27,6 +27,14 @@ export const AZURE_COMPUTER_VISION_KEY = process.env.AZURE_COMPUTER_VISION_KEY |
 export const AZURE_COMPUTER_VISION_REGION = process.env.AZURE_COMPUTER_VISION_REGION || 'westus';
 
 /**
+ *
+ */
+export const AZURE_TRANSLATION_ENDPOINT  = process.env.AZURE_TRANSLATION_ENDPOINT || null;
+export const AZURE_TRANSLATION_KEY = process.env.AZURE_TRANSLATION_KEY || null;
+export const AZURE_TRANSLATION_REGION = process.env.AZURE_TRANSLATION_REGION || 'westus';
+
+
+/**
  * Настройка папки загрузки файлов
  */
 import path from 'path';

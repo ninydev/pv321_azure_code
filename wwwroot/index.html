@@ -46,11 +46,15 @@
                 img.width = 200;
                 img.src = result.file.url;
 
+                const h2 = document.createElement('h2');
+                h2.textContent = result.translations.uk;
+
                 const h3 = document.createElement('h3');
                 h3.textContent = result.caption;
 
                 divAzure.innerHTML = '';
                 divAzure.appendChild(img);
+                divAzure.appendChild(h2);
                 divAzure.appendChild(h3);
 
             } else {
