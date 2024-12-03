@@ -8,28 +8,31 @@
 
 <h1> Deploy After Commit</h1>
 
-<form name="sendAvatarDefault">
-    <h2>To Default</h2>
-    <input type="file" name="avatar">
-    <input type="submit">
-</form>
 
-<form name="sendAvatarLocal">
-    <h2>To Local</h2>
-    <input type="file" name="avatar">
-    <input type="submit">
-</form>
+<div id="divAzure">
+    <form name="sendAvatarAzure">
+        <h2>To Azure</h2>
+        <input type="file" name="avatar">
+        <input type="submit">
+    </form>
+</div>
+
+
 
 <script>
-    document.forms.sendAvatarDefault.onsubmit = async (ev) => {
+
+    const divAzure = document.getElementById('divAzure');
+
+    document.forms.sendAvatarAzure.onsubmit = async (ev) => {
         ev.preventDefault(); // Отключаем стандартное поведение формы
+        divAzure.innerHTML = 'Loading...';
 
         // Создаем объект FormData для передачи данных
         const formData = new FormData(ev.target);
 
         try {
             // Отправляем fetch-запрос
-            const response = await fetch('/upload', {
+            const response = await fetch('/upload-azure', {
                 method: 'POST',
                 body: formData, // Передаем файл как тело запроса
             });
@@ -38,33 +41,18 @@
             if (response.ok) {
                 const result = await response.json();
                 console.log('Файл успешно загружен:', result);
-            } else {
-                console.error('Ошибка загрузки:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Ошибка:', error);
-        }
-    };
-</script>
 
-<script>
-    document.forms.sendAvatarLocal.onsubmit = async (ev) => {
-        ev.preventDefault(); // Отключаем стандартное поведение формы
+                const img = document.createElement('img');
+                img.width = 200;
+                img.src = result.file.url;
 
-        // Создаем объект FormData для передачи данных
-        const formData = new FormData(ev.target);
+                const h3 = document.createElement('h3');
+                h3.textContent = result.caption;
 
-        try {
-            // Отправляем fetch-запрос
-            const response = await fetch('/upload-local', {
-                method: 'POST',
-                body: formData, // Передаем файл как тело запроса
-            });
+                divAzure.innerHTML = '';
+                divAzure.appendChild(img);
+                divAzure.appendChild(h3);
 
-            // Обрабатываем ответ сервера
-            if (response.ok) {
-                const result = await response.json();
-                console.log('Файл успешно загружен:', result);
             } else {
                 console.error('Ошибка загрузки:', response.statusText);
             }

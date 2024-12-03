@@ -19,8 +19,12 @@ export const AZURE_STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME
 export const AZURE_STORAGE_ACCOUNT_KEY = process.env.AZURE_STORAGE_ACCOUNT_KEY || null;
 export const AZURE_STORAGE_AVATAR_BASKET = process.env.AZURE_STORAGE_AVATAR_BASKET || 'avatars';
 
-
-
+/**
+ *
+ */
+export const AZURE_COMPUTER_VISION_ENDPOINT  = process.env.AZURE_COMPUTER_VISION_ENDPOINT || null;
+export const AZURE_COMPUTER_VISION_KEY = process.env.AZURE_COMPUTER_VISION_KEY || null;
+export const AZURE_COMPUTER_VISION_REGION = process.env.AZURE_COMPUTER_VISION_REGION || 'westus';
 
 /**
  * Настройка папки загрузки файлов

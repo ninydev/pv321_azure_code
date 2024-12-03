@@ -1,4 +1,5 @@
 import {uploadToAzure} from "../services/files/uploadToAzure.js";
+import {getCaptioning} from "../services/computer_vision/captioning.service.js";
 
 export const uploadFileAzureController = async (req, res) => {
 
@@ -13,10 +14,16 @@ export const uploadFileAzureController = async (req, res) => {
     try {
         // Загружаем файл через модуль
         const uploadedFile = await uploadToAzure(file);
+        console.log(uploadedFile)
+
+        // Додаємо caption
+        const caption = await getCaptioning(uploadedFile.url);
+        console.log(caption)
 
         res.json({
             message: 'Файл успешно загружен в Azure Storage',
             file: uploadedFile,
+            caption: caption
         });
     } catch (err) {
         res.status(500).json({
